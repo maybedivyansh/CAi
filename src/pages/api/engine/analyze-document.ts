@@ -3,8 +3,7 @@ import { GoogleGenerativeAI } from '@google/generative-ai'
 import { createClient } from '@supabase/supabase-js'
 import { getMimeType } from '@/utils/mimeType'
 
-// Initialize Gemini
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || process.env.NEXT_PUBLIC_GEMINI_API_KEY || '')
+// Initialize Gemini inside handler
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     if (req.method !== 'POST') {
@@ -13,6 +12,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     try {
         const { filePath, fileName } = req.body
+
+        const apiKey = process.env.GEMINI_API_KEY || process.env.NEXT_PUBLIC_GEMINI_API_KEY;
+        if (!apiKey) {
+            console.error('Missing Gemini API Key');
+            return res.status(500).json({ success: false, error: 'Configuration Error: GEMINI_API_KEY is missing in Vercel Environment Variables.' });
+        }
+        const genAI = new GoogleGenerativeAI(apiKey);
 
         if (!filePath) {
             return res.status(400).json({ success: false, error: 'File path is required' })
