@@ -105,8 +105,9 @@ export default function TransactionsPage() {
                 </div>
 
                 {/* Filters */}
-                <div className="grid grid-cols-1 md:grid-cols-4 gap-4 bg-white/5 p-4 rounded-xl border border-white/5">
-                    <div className="md:col-span-2 relative">
+                {/* Filters */}
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 bg-white/5 p-4 rounded-xl border border-white/5 items-center">
+                    <div className="lg:col-span-4 relative">
                         <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500" />
                         <Input
                             placeholder="Search transactions..."
@@ -115,7 +116,7 @@ export default function TransactionsPage() {
                             className="pl-9 bg-black/20 border-white/10 text-white"
                         />
                     </div>
-                    <div>
+                    <div className="lg:col-span-3">
                         <Select value={categoryFilter} onValueChange={setCategoryFilter}>
                             <SelectTrigger className="bg-black/20 border-white/10 text-white">
                                 <SelectValue placeholder="Category" />
@@ -133,19 +134,19 @@ export default function TransactionsPage() {
                             </SelectContent>
                         </Select>
                     </div>
-                    <div className="flex items-center justify-end gap-4 text-sm font-mono">
-                        <div className="text-right">
-                            <div className="text-slate-500 text-xs">Total Inflow</div>
-                            <div className="text-green-400">₹{totalInflow.toLocaleString('en-IN')}</div>
+                    <div className="lg:col-span-5 flex items-center justify-end gap-4 text-sm font-mono overflow-x-auto">
+                        <div className="text-right min-w-[80px]">
+                            <div className="text-slate-500 text-xs uppercase tracking-wider">Total Inflow</div>
+                            <div className="text-green-400 font-medium">₹{totalInflow.toLocaleString('en-IN')}</div>
                         </div>
-                        <div className="h-8 w-px bg-white/10"></div>
-                        <div className="text-right">
-                            <div className="text-slate-500 text-xs">Total Outflow</div>
-                            <div className="text-red-400">₹{totalOutflow.toLocaleString('en-IN')}</div>
+                        <div className="h-8 w-px bg-white/10 hidden sm:block"></div>
+                        <div className="text-right min-w-[80px]">
+                            <div className="text-slate-500 text-xs uppercase tracking-wider">Total Outflow</div>
+                            <div className="text-red-400 font-medium">₹{totalOutflow.toLocaleString('en-IN')}</div>
                         </div>
-                        <div className="h-8 w-px bg-white/10"></div>
-                        <div className="text-right">
-                            <div className="text-slate-500 text-xs">Net Flow</div>
+                        <div className="h-8 w-px bg-white/10 hidden sm:block"></div>
+                        <div className="text-right min-w-[80px]">
+                            <div className="text-slate-500 text-xs uppercase tracking-wider">Net Flow</div>
                             <div className={`font-bold ${netFlow >= 0 ? 'text-blue-400' : 'text-orange-400'}`}>
                                 {netFlow >= 0 ? '+' : ''}₹{netFlow.toLocaleString('en-IN')}
                             </div>
