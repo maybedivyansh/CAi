@@ -28,7 +28,8 @@ export default function AddTransactionForm({ onAddTransaction, onClose }: Props)
             category,
             date,
             confidence: 1.0, // Manual entry is 100% confident
-            merchant: description // Simplify for now
+            merchant: description, // Simplify for now
+            type: 'DEBIT'
         }
 
         onAddTransaction(newTxn)

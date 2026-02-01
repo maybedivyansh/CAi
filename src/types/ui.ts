@@ -1,7 +1,7 @@
 import { RegimeComparison, ShadowGap, Transaction, TransactionClassification, TaxBreakdown } from './engine';
 
 export type EnrichedTransaction = Transaction & TransactionClassification & {
-    type?: 'Credit' | 'Debit'; // bridging old UI requirement
+    type?: 'DEBIT' | 'CREDIT'; // bridging old UI requirement
     originalCategory?: string; // bridging old UI requirement
     paymentMethod?: string;
 };

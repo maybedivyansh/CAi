@@ -25,6 +25,8 @@ export interface ShadowGap {
     potentialSavings: number
     effort: 'Easy' | 'Medium' | 'Hard'
     priority: number
+    description?: string
+    impact?: string[]
 }
 
 export interface Deductions {
