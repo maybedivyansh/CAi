@@ -126,7 +126,7 @@ export const compareRegimes = (newTax: TaxBreakdown, oldTax: TaxBreakdown): Regi
 
 // Initialize Gemini safely
 const getGeminiModel = () => {
-    const apiKey = process.env.GEMINI_API_KEY;
+    const apiKey = process.env.GEMINI_API_KEY || process.env.NEXT_PUBLIC_GEMINI_API_KEY;
     if (!apiKey) return null;
     const genAI = new GoogleGenerativeAI(apiKey);
     // Explicitly set the version to gemini-1.5-flash which is generally available and fast
